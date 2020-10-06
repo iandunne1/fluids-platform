@@ -1,0 +1,65 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Fluids365 Portal</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/client.css" rel="stylesheet" />
+    <link href="/css/client-govuk.css" rel="stylesheet" />
+    <link href="/css/fluids-govuk-theme.css" rel="stylesheet" />
+   
+    <script src="/js/fluids-sdk.js"></script>
+    <script src="/scripts/portal-config.js"></script>
+    
+    <script>
+      function getParamByName(name, url) {
+        if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, '\\$&');
+            let regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    };
+
+        $(document).ready(function () {
+            let w = FluidsSdk.create(), 
+            createLink = function (item) {
+                switch (item.$$type) {
+                    case "FRO":
+                        return '/request-offering.html?id=' + item.$$id + '&name=' + item.DisplayName + '&revId=' + item.RevisionId;
+                    default:
+                        return '#';
+                }
+            };
+            w.attach([
+            {
+                type: "control",
+                controlType: "SearchResult",
+                containerId: "content-location",
+                css: "client--T1-searchresult",
+                template: "RO+KB",
+                createItemUrl: createLink,
+                pageSize: 5
+            }]);
+            w.start();
+            setTimeout(function () {
+                w.trigger("PerformSearch", {
+                    queryName: "SearchRequestOfferings",
+                    text: this.getParamByName("text")
+                });
+            }, 100);
+        });
+    </script>
+</head>
+
+<body>
+    <div id="content-location" class="content"></div>
+</body>
+
+</html>

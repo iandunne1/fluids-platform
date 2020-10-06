@@ -1,0 +1,185 @@
+.fluids-page-footer .fluids-page-footer-links {
+  margin-bottom: 0.5rem;
+}
+.fluids-page-footer .fluids-page-footer-links a.link-image {
+  margin-right: 1rem;
+}
+.fluids-page-footer .fluids-page-footer-links img.link-image {
+  background-color: #6c757d;
+  margin-right: 0.25rem;
+}
+.fluids-page-footer .fluids-footer-logo {
+  width: 24px;
+}
+.fluids-page-footer a.fluids-page-footer-logo {
+  display: inline-block;
+  padding-top: 112px;
+  min-width: 132px;
+  margin-left: 4px;
+  background-size: 125px;
+  background-repeat: no-repeat;
+  background-image: url("/imgs/FLUIDS365-icon-6d6d6d.png");
+  background-position: center;
+  text-align: center;
+  white-space: nowrap;
+}
+@media (max-width: 800px) {
+  .fluids-page-footer .fluids-page-footer-links {
+    width: 468px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.fluids-page-header .fluids-nav-container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.index-content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background: linear-gradient(135deg, #ffffff, #99d9ea 135%);
+  height: 100%;
+  width: 100%;
+}
+.index-content .index-content-container {
+  margin: auto;
+}
+.index-content .fluids-homepage-text {
+  color: #1a7287;
+  text-align: center;
+}
+.index-content .fluids-teardrop-bg {
+  height: 200px;
+  background-image: url("/imgs/fluids365-icon.png");
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: 270px;
+}
+.fill-content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+.quick-search-widgets {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-bottom: 0.75rem;
+  width: 100%;
+}
+.portal-content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  z-index: -1;
+}
+.portal-content .main-content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  position: relative;
+  margin: 0;
+}
+.portal-content .search-container,
+.portal-content .form-container,
+.portal-content .summary-container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+}
+.portal-content .search-container .search-container-content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+.portal-content .form-container,
+.portal-content .summary-container {
+  padding: 0 1rem;
+}
+.portal-content .form-container > .portal-form,
+.portal-content .summary-container > .portal-form {
+  background-color: #fff;
+  height: 100%;
+  width: 100%;
+  padding: 1rem;
+}
+.portal-content .progress-bar-full {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  background-color: rgba(61, 61, 61, 0.333);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.portal-content .progress-bar-full .progress-bar-container {
+  margin: auto;
+  width: 80%;
+}
+.portal-content .progress-bar-full .progress-bar-message {
+  text-align: center;
+  width: auto;
+  color: #ffffff;
+}
+.portal-content .progress-bar-full .progress-bar {
+  height: 1rem;
+}
+.portal-content .fluids-body {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  position: relative;
+}
+.portal-content .invalid-page-access {
+  margin: auto;
+  text-align: center;
+}
+.portal-content .invalid-page-access h3 {
+  color: #cc0000;
+}
+
+#root-container > div > div > div > header
+{
+  background-color: brown;
+}
+
+#root-container > div > div > div > header > div > h4,
+#root-container > div > div > div > header > div > h5
+{
+  color: yellow;
+}

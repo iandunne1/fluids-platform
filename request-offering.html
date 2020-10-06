@@ -1,0 +1,143 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Fluids365 Portal</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+	
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/external-portal.css" rel="stylesheet" />
+    <link href="/css/client-govuk.css" rel="stylesheet" />
+    <link href="/css/fluids-govuk-theme.css" rel="stylesheet" />
+
+    <script src="/js/fluids-sdk.js"></script>
+    <script src="/scripts/portal-config.js"></script>
+    <script>
+        var containers = {
+            form: null,
+            summary: null,
+        }, ep = "external-portal.html", widget = FluidsSdk.create();
+
+        function getParamByName(name, url) {
+            if (!url) url = window.location.href;
+                name = name.replace(/[\[\]]/g, '\\$&');
+                let regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        function showLoader(isVisible) {
+            if (isVisible === true) {
+                $("#global-loader").show();
+            } else {
+                $("#global-loader").hide();
+            }
+        }
+        widget.attach([
+            {
+                type: "eventHandler",
+                event: "IsApplicationBusy",
+                on: function (sdk) {
+                    showLoader(sdk.options.arguments);
+                }
+            },
+            {
+                type: "control",
+                controlType: "RequestOfferingForm",
+                containerId: "form-container",
+                css: "bg-white",
+                RevisionId: getParamByName("revId"),
+                WorkflowId: getParamByName("id"),
+            },
+            {
+                type: "control",
+                controlType: "SummaryForm",
+                containerId: "summary-container",
+                css: "container portal-form h-100 bg-white",
+                subRegionCss: "summary-form-content",
+                onConfirmation: function (callback) {
+                    FluidsSdk.Notification.Confirm("Would you like to submit your request?", "Submit Request Offering", {
+                        confirmed: callback.confirm,
+                        cancelled: callback.cancel
+                    });
+                }
+            },
+            {
+                type: "eventHandler",
+                event: "QueryRequestOffering",
+                on: function () {
+                    containers.summary.hide();
+                    containers.form.show();
+                }
+            },
+            {
+                type: "eventHandler",
+                event: "ShowSummaryForm",
+                on: function (sdk) {
+                    if (sdk.options.arguments === true) {
+                        containers.summary.show();
+                        containers.form.hide();
+                    } else {
+                        containers.summary.hide();
+                        containers.form.show();
+                    }
+                }
+            },
+            {
+                type: "eventHandler",
+                event: "RequestOfferingSubmitted",
+                on: function (sdk) {
+                    let data = sdk.options.arguments;
+                    if (data.success === true && data.result != null) {
+                        FluidsSdk.Notification.Info("Your request with Job ID " + data.result + " was successfully submitted.", "Submit Request Offering", {
+                            callback: function () {
+                                window.location.href = ep;
+                            }
+                        });
+                    } else {
+                        FluidsSdk.Notification.Info("Something went wrong in submitting the request offering.", "Submit Request Offering");
+                    }
+                }
+            },
+            {
+                type: "eventHandler",
+                event: "ClearRequestOffering",
+                on: function () {
+                    window.location.href = ep;
+                }
+            },
+        ]);
+
+        $(document).ready(function () {
+            containers.form = $("#form-container");
+            containers.summary = $("#summary-container");
+            document.title = getParamByName("name");
+            console.log( getParamByName("name"));
+            console.log( getParamByName("revId"));
+            console.log( getParamByName("id"));
+            widget.start();
+            widget.trigger("DispatchStore", {
+                type: "SetRequestOfferingTitle",
+                payload: getParamByName("name")
+            });
+            widget.trigger("QueryRequestOffering", {
+				RevisionId: getParamByName("revId"),
+                WorkflowId: getParamByName("id"),
+			});
+        });
+    </script>
+</head>
+
+<body>
+    <div id="global-loader" class="portal-content"></div>
+    <div id="form-container" class="portal-content"></div>
+    <div id="summary-container" class="portal-content"></div>
+</body>
+
+
+</html>

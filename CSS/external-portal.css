@@ -1,0 +1,46 @@
+#global-loader {
+    position        : absolute;
+    top             : 0;
+    left            : 0;
+    width           : 100%;
+    height          : 100%;
+    background-color: rgba(0, 0, 0, 0.333);
+    z-index         : 1000;
+}
+
+.quicksearch-title {
+    font      : bold;
+    color     : #007bff;
+    margin    : 0;
+    text-align: left;
+    width     : 100%;
+    display   : inline-block;
+}
+
+.quicksearch-keyword {
+    color           : #ffffff;
+    background-color: #6c757d;
+    border-radius   : 10rem;
+    margin-right    : 0.25rem;
+    padding         : 0.25rem 0.67rem;
+    display         : inline-block;
+    font-size       : 0.7rem;
+    font-weight     : 500;
+    line-height     : 1;
+    text-align      : center;
+    white-space     : nowrap;
+    vertical-align  : baseline;
+}
+
+.quicksearch-hint {
+    font-size     : 0.8rem;
+    font-weight   : 500;
+    color         : #6c757d;
+    text-align    : left;
+    vertical-align: text-bottom;
+}
+
+.quicksearch-dateago {
+    text-align : right;
+    font-weight: 400;
+}

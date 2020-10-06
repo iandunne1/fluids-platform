@@ -1,0 +1,287 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>fluid365</title>
+
+    <!--Google Fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Ubuntu&display=swap" rel="stylesheet">
+
+    <!--Style sheets-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="CSS/StyleSheet.css" rel="stylesheet" />
+
+    <!--Font awesome-->
+    <script src="https://kit.fontawesome.com/8c7733a075.js" crossorigin="anonymous"></script>
+
+
+    <!--Bootstrap scripts-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+    
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="/css/client.css" rel="stylesheet" />
+    <link href="/css/client-govuk.css" rel="stylesheet" />
+    <link href="/css/fluids-govuk-theme.css" rel="stylesheet" />
+
+    <script src="/js/fluids-sdk.js"></script>
+    <script src="/scripts/portal-config.js"></script>
+    <script>
+        $(document).ready(function () {
+            FluidsSdk.WidgetConfig.predictiveSearchResultCount = 10;
+            
+            let w = FluidsSdk.create();
+            w.attach([{
+                type: "control",
+                controlType: "SearchInput",
+                containerId: "portalsearch-container",
+                css: "client--T1-searchinput-component",
+                template: "RO+KB",
+                queryName: "SearchRequestOfferings",
+                createItemUrl: function (item) {
+                    switch (item.$$type) {
+                        case "FRO":
+                            return '/request-offering.html?id=' + item.$$id + '&name=' + item.DisplayName + '&revId=' + item.RevisionId;
+                        default:
+                            return '#';
+                    }
+                },
+                onFullSearch: function (text) {
+                    window.location.href = "/searchres.html?text=" + text;
+                },
+            },]);
+            w.start();
+        });
+    </script>
+
+
+
+</head>
+<body>
+
+
+    <section id="top-navbar">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="Index.html"><em>f</em>luids365</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Download</a></li>
+                </ul>
+
+             
+                    
+                    <div id="portalsearch-container" class="portalsearch-content"></div>
+                    
+                </form>
+            </div>
+        </nav>
+    </section>
+
+
+
+
+
+    <section id="title">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777" /></svg>
+                    <div class="container">
+                        <div class="carousel-caption text-left">
+                            <h1>New feature annoucement for <em>f</em>luids365</h1>
+                            <p>Extensive low code design tools that provides a robust and customizable entity model technology for data modelling released today</p>
+                            <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777" /></svg>
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1>Download our digital transformation roadmap.</h1>
+                            <p>How can people, process, and technology walk together on a digital transformation journey, Download our guide.</p>
+                            <p><a class="btn btn-lg btn-primary" href="#" role="button">Download</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777" /></svg>
+                    <div class="container">
+                        <div class="carousel-caption text-right">
+                            <h1>Whats new for <em>f</em>luids365</h1>
+                            <p>Join us for a Live Team Meeting as Liam Murray explores all that is new in <em>f</em>luid365 </p>
+                            <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn More</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+    <div class="container marketing">
+        <div>
+            <section id="features">
+                <div class="row">
+
+
+                    <div class="col-lg-4 feature-box">
+                        <i class="fas fa-user-tie fa-4x feature-icon"></i>
+                        <h2>People & Talent Management</h2>
+                        <p>Processes to attract, onboard, develop, motivate, and retain high-performing employees </p>
+                        <p><a class="btn btn-secondary" href="TalentPeople.html" role="button">View details &raquo;</a></p>
+
+
+                    </div>
+
+                    <div class="col-lg-4 feature-box">
+                        <i class="fas fa-tv fa-4x feature-icon"></i>
+                        <h2>Asset Management</h2>
+                        <p>Processes to manage the asset from the point of request, to the moment the asset is retired.</p>
+                        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+                    </div>
+
+                    <hr />
+
+                    <div class="col-lg-4 feature-box">
+                        <i class="fas fa-hand-pointer fa-4x feature-icon"></i>
+                        <h2>Self Service</h2>
+                        <p>Emplower your workforce (office and remote) with a consumer-like service experience to meet the diverse needs. </p>
+                        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+
+                    </div>
+
+                    <div class="col-lg-4 feature-box">
+                        <i class="fas fa-car-crash fa-4x feature-icon"></i>
+                        <h2>Car Insurance</h2>
+                        <p>Make a claim on your car insurance, report an incident, get a new quote or renew your existing policy. </p>
+                        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+
+                    </div>
+
+                    <div class="col-lg-4 feature-box">
+                        <i class="fas fa-ambulance fa-4x feature-icon"></i>
+                        <h2>Hospital trust</h2>
+                        <p>Belfast Health Trust emplowers their office and remote staff with a On Demand Electroic app </p>
+                        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+
+                    </div>
+
+                    <hr />
+
+                    <div class="col-lg-4 feature-box">
+                        <i class="fas fa-users-cog fa-4x feature-icon"></i>
+                        <h2>Goverment</h2>
+                        <p>Parliamentary process, legislative process, regulatory development process and financial management.</p>
+                        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+        <!-- START THE FEATURETTES -->
+        <hr class="featurette-divider">
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading">Low Code. <span class="text-muted">It’ll blow your mind.</span></h2>
+                <p class="lead">
+                    Build an ecosystem instead of single giant system to do everything. Using a visual development approach to programming.Low-code enables developers to create applications for web and mobile, using drag-and-drop components through a graphical user interface.
+                </p>
+            </div>
+            <div class="col-md-5">
+                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+            </div>
+        </div>
+        <hr class="featurette-divider">
+        <div class="row featurette">
+            <div class="col-md-7 order-md-2">
+                <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
+                <p class="lead">Watch the video. It easily connect to database, REST API, active directory, and other systems. Using graphical user interface to filter the data, the low-code platform generates all the codes required for connection handling and querying.</p>
+            </div>
+            <div class="col-md-5 order-md-1">
+                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+            </div>
+        </div>
+        <hr class="featurette-divider">
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+                <p class="lead">Enable digital transformation in your organisations with the capabilities to create on-demand electronic apps (Request Offerings) with low code </p>
+            </div>
+            <div class="col-md-5">
+                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+            </div>
+        </div>
+        <hr class="featurette-divider">
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <div class="row footer">
+        <div class="col-lg-2" style="text-align: right">
+            <p class="p1">Connect with us</p>
+        </div>
+        <div class="col-lg-6">
+            <a href="https://twitter.com/fluids365"><i class="fab fa-twitter fa-3x feature-icon"></i></a>
+            <a href="https://twitter.com/fluids365"><i class="fab fa-facebook fa-3x feature-icon"></i></a>
+            <a href="https://twitter.com/fluids365"><i class="fab fa-youtube fa-3x feature-icon"></i></a>
+        </div>
+        <div class="col-lg-4">
+            <p class="float-right"><a href="#">Back to top</a>
+        </div>
+    </div>
+
+    <!-- intercom Chatbot -->
+    <script>
+        //---------------- for chatbot --------------------------
+        window.intercomSettings = {
+            app_id: "d8y0r6na",
+            webURL: window.location.hostname
+        };
+
+        (function () { var w = window; var ic = w.Intercom; if (typeof ic === "function") { ic('reattach_activator'); ic('shutdown'); ic('update', intercomSettings); } else { var d = document; var i = function () { i.c(arguments) }; i.q = []; i.c = function (args) { i.q.push(args) }; w.Intercom = i; function l() { var s = d.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = 'https://widget.intercom.io/widget/b4jd3a54'; var x = d.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x); } if (w.attachEvent) { w.attachEvent('onload', l); } else { document.cookie = "intercom-id-" + intercomSettings.app_id + "=;path=/;domain=.github.com;"; w.addEventListener('load', l, false); } } })()
+        //---------------- for chatbot --------------------------
+    </script>
+    <!-- intercom Chatbot -->
+
+
+
+
+</body>
+</html>
