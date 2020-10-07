@@ -1,0 +1,51 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Fluids365 Portal</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="/css/client.css" rel="stylesheet" />
+    <link href="/css/client-govuk.css" rel="stylesheet" />
+    <link href="/css/fluids-govuk-theme.css" rel="stylesheet" />
+
+    <script src="/js/fluids-sdk.js"></script>
+    <script src="/scripts/portal-config.js"></script>
+    <script>
+        $(document).ready(function () {
+            FluidsSdk.WidgetConfig.predictiveSearchResultCount = 10;
+            
+            let w = FluidsSdk.create();
+            w.attach([{
+                type: "control",
+                controlType: "SearchInput",
+                containerId: "portalsearch-container",
+                css: "client--T1-searchinput-component",
+                template: "RO+KB",
+                queryName: "SearchRequestOfferings",
+                createItemUrl: function (item) {
+                    switch (item.$$type) {
+                        case "FRO":
+                            return '/request-offering.html?id=' + item.$$id + '&name=' + item.DisplayName + '&revId=' + item.RevisionId;
+                        default:
+                            return '#';
+                    }
+                },
+                onFullSearch: function (text) {
+                    window.location.href = "/searchres.html?text=" + text;
+                },
+            },]);
+            w.start();
+        });
+    </script>
+</head>
+
+<body>
+    <div id="portalsearch-container" class="portalsearch-content"></div>
+</body>
+
+</html>
